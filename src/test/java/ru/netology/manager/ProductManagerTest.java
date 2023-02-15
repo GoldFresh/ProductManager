@@ -40,7 +40,7 @@ public class ProductManagerTest {
     }
     @Test
     public void searchByBookName(){
-        Product[] expected = {new Book(1, "Книга 1", 200, "Автор 1")};
+        Product[] expected = new Product[]{product1};
         Product[] actual = manager.searchBy("Книга 1");
 
         Assertions.assertArrayEquals(expected, actual);
@@ -48,7 +48,7 @@ public class ProductManagerTest {
 
     @Test
     public void searchBySmartPhoneName(){
-        Product[] expected = {new SmartPhone(5, "Смартфон 2", 20_000, "Производитель 2")};
+        Product[] expected = new Product[]{product5};
         Product[] actual = manager.searchBy("Смартфон 2");
 
         Assertions.assertArrayEquals(expected, actual);
