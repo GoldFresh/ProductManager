@@ -10,7 +10,7 @@ import ru.netology.repository.ProductRepository;
 
 public class ProductManagerTest {
     private ProductRepository repository = new ProductRepository();
-    public ProductManager manager = new ProductManager(repository);
+    private ProductManager manager = new ProductManager(repository);
 
     Product product1 = new Book(1, "Книга 1", 200, "Автор 1" );
     Product product2 = new Book(2, "Книга 2", 300, "Автор 2" );
@@ -50,6 +50,22 @@ public class ProductManagerTest {
     public void searchBySmartPhoneName(){
         Product[] expected = {new SmartPhone(5, "Смартфон 2", 20_000, "Производитель 2")};
         Product[] actual = manager.searchBy("Смартфон 2");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void searchByMissingProduct(){
+        Product[] expected = {};
+        Product[] actual = manager.searchBy("Книга 4");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void searchByValidProducts(){
+        Product[] expected = new Product[]{product1, product2, product3};
+        Product[] actual = manager.searchBy("Книга");
 
         Assertions.assertArrayEquals(expected, actual);
     }

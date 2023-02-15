@@ -22,11 +22,12 @@ public class ProductRepository {
         int length = products.length - 1;
         Product[] tmp = new Product[length];
         int index = 0;
-        for (Product product : products)
+        for (Product product : products) {
             if (product.getID() != ID) {
                 tmp[index] = product;
                 index++;
             }
-        products = tmp;
+            products = tmp;
+        }
     }
 }
